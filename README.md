@@ -12,5 +12,4 @@ To get started:
 
 Then follow the on-screen instructions to set up your repo.
 =======
-# This repo contains Micayla's portfolio and SPS projects.
 >>>>>>> 48dd74662cea9c9d88158fe85b4a7256bc2e65ff
