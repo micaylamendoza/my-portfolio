@@ -74,7 +74,7 @@ Sidebar navigation style
   color: white;
   display: block;
   transition: 0.3s;
-  font-family: helloFont;
+  font-family: headerFont;
 }
 
 .sidenav a:hover {
