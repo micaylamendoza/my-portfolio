@@ -1,9 +1,95 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: 900px;
 }
+
+
+body {
+  background-color: white;
+}
+@font-face {
+   font-family: 'headerFont';
+   src: url(Fonts/Rubik-Regular.ttf);
+}
+
+@font-face {
+   font-family: 'helloFont';
+   src: url(Fonts/RobotoSlab-Regular.ttf);
+}
+
+
+h1 {
+    font-family: headerFont;
+    font-size: 50px;
+    text-align: center;
+    position: relative;
+    top: 60px;
+}
+
+h2 {
+    font-family: headerFont;
+    font-size: 50px;
+    text-align: center;
+    position: relative;
+    top: -250px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: -70px;
+}
+
 
 #greeting-container {
   margin-top: 20px;
+}
+
+
+/*
+///
+Sidebar navigation style
+///
+*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #1039a0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  font-family: helloFont;
+}
+
+.sidenav a:hover {
+  color: #ff1684;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
