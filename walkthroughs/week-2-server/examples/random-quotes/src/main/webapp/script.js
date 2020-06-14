@@ -14,7 +14,7 @@
 
 /**
  * Fetches a random quote from the server and adds it to the DOM.
- */
+ 
 function getRandomQuote() {
   console.log('Fetching a random quote.');
 
@@ -28,7 +28,7 @@ function getRandomQuote() {
 /**
  * Handles response by converting it to text and passing the result to
  * addQuoteToDom().
- */
+
 function handleResponse(response) {
   console.log('Handling the response.');
 
@@ -41,7 +41,7 @@ function handleResponse(response) {
   textPromise.then(addQuoteToDom);
 }
 
-/** Adds a random quote to the DOM. */
+/** Adds a random quote to the DOM. 
 function addQuoteToDom(quote) {
   console.log('Adding quote to dom: ' + quote);
 
@@ -54,7 +54,7 @@ function addQuoteToDom(quote) {
  * ES6 feature called arrow functions to shorten the code. This function
  * combines all of the above code into a single Promise chain. You can use
  * whichever syntax makes the most sense to you.
- */
+ 
 function getRandomQuoteUsingArrowFunctions() {
   fetch('/random-quote').then(response => response.text()).then((quote) => {
     document.getElementById('quote-container').innerText = quote;
@@ -65,9 +65,29 @@ function getRandomQuoteUsingArrowFunctions() {
  * Another way to use fetch is by using the async and await keywords. This
  * allows you to use the return values directly instead of going through
  * Promises.
- */
+
 async function getRandomQuoteUsingAsyncAwait() {
   const response = await fetch('/random-quote');
   const quote = await response.text();
   document.getElementById('quote-container').innerText = quote;
+}
+*/
+
+/*
+ * Fetches message from servlet and returns values directly
+ */
+asynch function getMessageUsingAsyncAwait() {
+  const response = await fetch('/data');
+  const addDataToDom = await response.text();
+  document.getElementById('message-container').innerText = addDataToDom;
+}
+
+
+/*
+ * Fetches message from servlet with single promise chain
+ */
+function getMessageWithArrowFunctions(helloMessage) {
+  fetch('/data').then(response => response.text()).then((helloMessage) => {
+    document.getElementById('message-container').innerText = helloMessage;
+  });
 }
