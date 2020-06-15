@@ -29,3 +29,22 @@ function getMessage() {
     document.getElementById('message-container').innerText = message;
   });
 }
+
+
+function getMessageJSON() {
+  fetch('/data').then(response => response.json()).then((message) => {
+    const messageListElement.innerHTML = '';
+    messageListElement.appendChild(
+    createListElement('Message 1: ' + message[0]));
+    messageListElement.appendChild(
+    createListElement('Message 2: ' + message[1]));
+    messageListElement.appendChild(
+    createListElement('Message 3: ' + message[2]));
+  });
+}
+
+function createListElement(text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
+}
