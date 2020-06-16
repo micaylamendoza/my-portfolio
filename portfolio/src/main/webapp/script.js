@@ -32,19 +32,11 @@ function getMessage() {
 
 
 function getMessageJSON() {
-  fetch('/data').then(response => response.json()).then((message) => {
-    const messageListElement.innerHTML = '';
-    messageListElement.appendChild(
-    createListElement('Message 1: ' + message[0]));
-    messageListElement.appendChild(
-    createListElement('Message 2: ' + message[1]));
-    messageListElement.appendChild(
-    createListElement('Message 3: ' + message[2]));
+  fetch('/data')  // sends a request to /data
+  .then(response => response.json()) // parses the response as JSON
+  .then((message) => { // now we can reference the fields in myObject!
+    console.log(message[0]);
+    console.log(message[1]);
+    console.log(message[2]);
   });
-}
-
-function createListElement(text) {
-    const liElement = document.createElement('li');
-    liElement.innerText = text;
-    return liElement;
 }
