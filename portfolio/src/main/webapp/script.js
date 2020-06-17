@@ -31,12 +31,14 @@ function getMessage() {
 }
 
 
-function getMessageJSON() {
+function getCommentJSON() {
   fetch('/data')  // sends a request to /data
   .then(response => response.json()) // parses the response as JSON
-  .then((message) => { // now we can reference the fields in myObject!
-    console.log(message[0]);
-    console.log(message[1]);
-    console.log(message[2]);
+  .then((comments) => { // now we can reference the fields in myObject!
+    const commentsListEl = document.getElementById('data-container');
+    commentsListEl.innerHTML = ' ';
+    commentsListEl.appendChild(
+        createListElements('Comments: ' + comments.Comment)
+    )
   });
 }

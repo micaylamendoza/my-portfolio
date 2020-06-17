@@ -26,25 +26,48 @@ import com.google.gson.Gson;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  ArrayList<String> comments = new ArrayList<>();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> micaylaMessages = new ArrayList<>();
-    micaylaMessages.add("My name is Micayla.");
-    micaylaMessages.add("I am from the Bay Area.");
-    micaylaMessages.add("I live in New York City.");
-
     // Converts ArrayList to a JSON string using Gson.
-    String json = convertToJsonUsingGson(micaylaMessages);
+    String json = convertToJsonUsingGson(comments);
 
     // Sends response as JSON.
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
 
-  private static String convertToJsonUsingGson(ArrayList<String> messages) {
+  private static String convertToJsonUsingGson(ArrayList<String> comments) {
     Gson gson = new Gson();
-    String json = gson.toJson(messages);
+    String json = gson.toJson(comments);
     return json;
   }
 
+@Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String newComment = getParameter(request, "text-input", "");
+
+    // Add input to ArrayList.
+    comments.add("Comment: " + newComment);
+
+    // Respond with the result.
+    response.setContentType("text/html;");
+
+    // Redirect to the index.html.
+    response.sendRedirect("/contact.html");
+  }
+
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String comments, String defaultValue) {
+    String value = request.getParameter(comments);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
 }
