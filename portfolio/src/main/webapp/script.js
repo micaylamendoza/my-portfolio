@@ -42,3 +42,9 @@ function getCommentJSON() {
     )
   });
 }
+
+function createListElements(text) {
+    const commentText = document.createElement('h3');
+    commentText.innerText = text;
+    return commentText;
+}
