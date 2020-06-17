@@ -29,3 +29,14 @@ function getMessage() {
     document.getElementById('message-container').innerText = message;
   });
 }
+
+
+function getMessageJSON() {
+  fetch('/data')  // sends a request to /data
+  .then(response => response.json()) // parses the response as JSON
+  .then((message) => { // now we can reference the fields in myObject!
+    console.log(message[0]);
+    console.log(message[1]);
+    console.log(message[2]);
+  });
+}
