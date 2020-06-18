@@ -35,16 +35,17 @@ function getCommentJSON() {
   fetch('/data')  // sends a request to /data
   .then(response => response.json()) // parses the response as JSON
   .then((comments) => { // now we can reference the fields in myObject!
-    const commentsListEl = document.getElementById('data-container');
-    commentsListEl.innerHTML = ' ';
-    commentsListEl.appendChild(
-        createListElements('Comments: ' + comments.Comment)
-    )
+
+    // Build list of comments
+    const commentsEl = document.getElementById('comment-container');
+    comments.Comments.forEach((line) => {
+      historyEl.appendChild(createListElement(line));
+    });
   });
 }
 
 function createListElements(text) {
-    const commentText = document.createElement('h3');
-    commentText.innerText = text;
-    return commentText;
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }

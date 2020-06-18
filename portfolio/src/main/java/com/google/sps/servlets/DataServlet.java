@@ -50,10 +50,7 @@ public class DataServlet extends HttpServlet {
     String newComment = getParameter(request, "text-input", "");
 
     // Add input to ArrayList.
-    comments.add("Comment: " + newComment);
-
-    // Respond with the result.
-    response.setContentType("text/html;");
+    comments.add(newComment);
 
     // Redirect to the index.html.
     response.sendRedirect("/contact.html");
