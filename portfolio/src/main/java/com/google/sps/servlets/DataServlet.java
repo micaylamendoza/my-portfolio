@@ -31,13 +31,14 @@ import com.google.gson.Gson;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-
-  ArrayList<String> comments = new ArrayList<>();
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {    
     // Converts ArrayList to a JSON string using Gson.
     String json = convertToJsonUsingGson(comments);
+
+    // Gives a PreparedQuery instance that contains all of the entities in Datastore with that kind
+    Query query = new Query("Task").addSort("new comment", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
 
     // Sends response as JSON.
     response.setContentType("application/json;");
@@ -69,12 +70,7 @@ public class DataServlet extends HttpServlet {
 
     // Store entity by passing it into datastore.put()
     datastore.put(taskEntity);
-
-    // Gives a PreparedQuery instance that contains all of the entities in Datastore with that kind
-    Query query = new Query("Task").addSort("new comment", SortDirection.DESCENDING);
-    PreparedQuery results = datastore.prepare(query);
-    for (Entity entity : results.asIterable());
-
+   
     // Redirect to the index.html.
     response.sendRedirect("/contact.html");
   }
