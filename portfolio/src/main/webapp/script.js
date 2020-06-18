@@ -39,7 +39,7 @@ function getCommentJSON() {
     // Build list of comments
     const commentsEl = document.getElementById('comment-container');
     comments.Comments.forEach((line) => {
-      historyEl.appendChild(createListElement(line));
+      commentsEl.appendChild(createListElement(line));
     });
   });
 }
