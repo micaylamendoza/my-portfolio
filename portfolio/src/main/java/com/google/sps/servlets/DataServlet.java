@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +54,18 @@ public class DataServlet extends HttpServlet {
 
     // Add input to ArrayList.
     comments.add(newComment);
+
+    // Creates an Entity with a kind of Task and stores it in taskEntity variable.
+    Entity taskEntity = new Entity("Task");
+
+    // Adds two properties to the taskEntity entity
+    taskEntity.setProperty("new comment", newComment);
+
+    // Creates an instance of the DatastoreService class.
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+    // Store entity by passing it into datastore.put()
+    datastore.put(taskEntity);
 
     // Redirect to the index.html.
     response.sendRedirect("/contact.html");
