@@ -24,3 +24,28 @@ function closeNav() {
 }
 
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+/** Creates a chart and adds it to the page. */
+function drawChart() {
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Interest');
+  data.addColumn('number', 'Count');
+        data.addRows([
+          ['C++', 15],
+          ['HTML', 10],
+          ['Java', 5],
+          ['CSS', 5],
+        ]);
+
+  const options = {
+    'title': 'My Skill Levels (on a scale of 1-15)',
+    'width':500,
+    'height':400
+  };
+
+  const chart = new google.visualization.BarChart(
+      document.getElementById('chart-container'));
+  chart.draw(data, options);
+}
