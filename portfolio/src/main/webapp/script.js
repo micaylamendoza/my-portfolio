@@ -38,8 +38,8 @@ function getCommentJSON() {
 
     // Build list of comments
     const commentsEl = document.getElementById('comment-container');
-    tasks.Comments.forEach((line) => {
-      historyEl.appendChild(createListElement(line));
+    comments.Comments.forEach((line) => {
+      commentsEl.appendChild(createListElement(line));
     });
   });
 }
