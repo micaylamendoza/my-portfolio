@@ -23,6 +23,34 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
+function getMessage() {
+  fetch('/data').then(response => response.text()).then((message) => {
+    document.getElementById('message-container').innerText = message;
+  });
+}
+
+
+function loadComments() {
+  fetch('/data').then(response => response.json()).then((tasks) => {
+    const taskListElement = document.getElementById('comment-results');
+    tasks.forEach((task) => {
+      taskListElement.appendChild(createTaskElement(task));
+    })
+  });
+}
+
+
+function createTaskElement(task) {
+  const taskElement = document.createElement('li');
+  taskElement.Comment = 'comment-container';
+
+  const commentElement = document.createElement('span');
+  commentElement.innerText = task.comment;
+
+  taskElement.appendChild(commentElement);
+  return taskElement;
+}
+
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);

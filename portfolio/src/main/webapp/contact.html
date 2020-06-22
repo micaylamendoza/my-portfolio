@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+ <body onload="loadComments()">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="aboutMe.html">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>  
+
+    <div>
+        <h5>Leave a comment below!</h5>
+        <div></div>
+        <form action="/data" method="POST">
+            <p>Enter your comment:</p>
+            <textarea name="comment-container"></textarea>
+            <br><br>
+            <input type="submit"></input>
+        </form>
+        
+        <label for="language-select">Choose a language:</label>
+        <select name="languages" id="language-select">
+          <option value="">Please select a language: </option>
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+        </select>
+
+        <div id="comment-results"></div>
+        <p id="comment-container"></p>
+    </div>
+
+  </body>
+</html>
