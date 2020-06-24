@@ -25,6 +25,20 @@
 
       <button onclick="getMessageJSON()">Fetch a message!</button>
 
+      <div>
+        <h5>Leave a comment below!</h5>
+        <p>Please respond with any feedback or questions you may have for me.</p>
+        <div onload "getCommentJSON()"></div>
+        <ul id="Comments"></ul>
+        <form action="/data" method="POST">
+            <p>Comments:</p>
+            <textarea name="text-input"></textarea>
+            <br><br>
+            <input type="submit"></input>
+        </form>
+        <br><br>
+      </div>
+
     </div>
   </body>
 </html>
